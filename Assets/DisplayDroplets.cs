@@ -36,7 +36,7 @@ public class DisplayDroplets : MonoBehaviour
             foreach (Transform c in dropletsParent.GetComponentInChildren<Transform>())
             {
                 Vector2 d = c.position-transform.position;
-                if (Mathf.Abs(d.x)<12&& Mathf.Abs(d.y) < 8)
+                if (Mathf.Abs(d.x)<12*2&& Mathf.Abs(d.y) < 8*2)
                 {
                     if (c.gameObject.activeInHierarchy)
                     {

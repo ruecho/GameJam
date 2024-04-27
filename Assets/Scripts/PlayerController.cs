@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     public GameObject spriteStuff;
     bool readyToRespawn = false;
     GameObject playerSpawn;
+    public AudioSource explosion;
+    public AudioSource jump;
     
     void Start()
     {
@@ -50,6 +52,8 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             gravitationalSpeed = jumpAcceleration;
+            jump.pitch = Random.Range(0.9f, 1.1f);
+            jump.Play();
         }
         // walk and run
         float playerInput = Input.GetAxis("Horizontal");
@@ -137,10 +141,12 @@ public class PlayerController : MonoBehaviour
     }
     void Death()
     {
+        explosion.Play();
         readyToRespawn = true;
         spriteStuff.SetActive(false);
         ps.Play();
         deathTimer = deathCooldown;
+        transform.GetComponent<DropMaker>().spawnDropletBoom(transform.position,1.0f,5);
     }
     void Respawn()
     {
@@ -155,13 +161,18 @@ public class PlayerController : MonoBehaviour
     public void kill()
     {
         float a = 0;// Mathf.PI;
-        for(int i= 0; i < 5; i++)
+        Vector3 spp = transform.position;
+        spp.y -= 1;
+        if (transform.GetComponentInParent<PlayerSpawner>() != null)
         {
-            a += Mathf.PI*2.0f / 5.0f;
-            //this.GetComponentInParent<PlayerSpawner>().spawnDroplet(transform.position, new Vector2(Mathf.Sin(a), Mathf.Cos(a))*20f,false);
-        }    
-        
-        Destroy(this.gameObject);
-        active = false;
+            transform.GetComponentInParent<PlayerSpawner>().spawnDropletBoom(transform.position, 1.0f, 3);
+
+            Destroy(this.gameObject);
+            active = false;
+        }
+        else
+        {
+            Death();
+        }
     }
 }
