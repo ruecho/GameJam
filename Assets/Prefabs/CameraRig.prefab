@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  distanceToPlayer: -6
+  distanceToPlayer: -5
   triggerMovementAtMin: -6
   triggerMovementAtMax: 5
   maxCamY: 40
