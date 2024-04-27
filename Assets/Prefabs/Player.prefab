@@ -48,6 +48,7 @@ MonoBehaviour:
   gravityAcceleration: 7
   maxFallingSpeed: -4
   jumpAcceleration: 6.5
+  horizontalSpeed: 4
   runAcceleration: 0
   maxSpeed: 0
   runDeceleration: 0
