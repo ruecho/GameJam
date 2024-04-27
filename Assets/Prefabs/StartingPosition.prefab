@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4787247424313682190}
   - component: {fileID: 3193580477187306981}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2766780430865613829}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StartingPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1206648402959725715}
   - component: {fileID: 9208859434975667957}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerRespawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}

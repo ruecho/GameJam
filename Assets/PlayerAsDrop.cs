@@ -5,13 +5,23 @@ using UnityEngine;
 public class PlayerAsDrop : MonoBehaviour
 {
     public PlayerSpawner ps;
+    public PlayerController pc2;
 
     void Update()
     {
-        var pc = ps.GetComponentInChildren<PlayerController>();
-        if(pc != null)
+        if(ps != null)
         {
-            this.transform.position = pc.transform.position;
+            var pc = ps.GetComponentInChildren<PlayerController>();
+            if (pc != null)
+            {
+                this.transform.position = pc.transform.position;
+            }
+
+        }
+
+        if(pc2 != null)
+        {
+            this.transform.position = pc2.transform.position;
         }
     }
 }
