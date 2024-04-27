@@ -1,0 +1,14 @@
+//UNITY_SHADER_NO_UPGRADE
+#ifndef MYHLSLINCLUDE_INCLUDED
+#define MYHLSLINCLUDE_INCLUDED
+float3 MyOtherFunction_float(float3 In)
+{
+    return In * In;
+}
+
+void MyFunction_float(float3 A, float B, out float3 Out)
+{
+    A = MyOtherFunction_float(A);
+    Out = A + B;
+}
+#endif //MYHLSLINCLUDE_INCLUDED
