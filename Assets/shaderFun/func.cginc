@@ -39,7 +39,7 @@ void MyFunction2_float(float2 UV, out float Out)
     
     
     
-    Out = val*10.0;
+    Out = val*2.0;
 }
 
 #endif //MYHLSLINCLUDE_INCLUDED
