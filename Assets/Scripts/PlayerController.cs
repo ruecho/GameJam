@@ -38,44 +38,33 @@ public class PlayerController : MonoBehaviour
         int moveDir = playerInput > 0 ? 1 : (playerInput < 0 ? -1 : 0);      
         if(moveDir != 0)
         {
-            Debug.Log("accelerate");
             if(movementSpeed * moveDir >= 0f)
             {
-                Debug.Log("normal");
                 movementSpeed += runAcceleration * moveDir * Time.deltaTime;                
             }
             if(movementSpeed * moveDir < 0f)
             {
-                Debug.Log("changedir");
                 movementSpeed += changeDirAcceleration * moveDir * Time.deltaTime;
             }
             movementSpeed = Mathf.Clamp(movementSpeed, -maxSpeed, maxSpeed);
         }
         if(moveDir == 0)
         {
-            Debug.Log("decelerate");
             if(movementSpeed > 0)
             {
-                Debug.Log("right");
-                Debug.Log(movementSpeed);
                 movementSpeed -= runDeceleration * Time.deltaTime;
-                Debug.Log(movementSpeed);
             }
             if(movementSpeed < 0)
             {
-                Debug.Log("left");
                 movementSpeed += runDeceleration * Time.deltaTime;
             }
             if(movementSpeed < 0.9f && movementSpeed > -0.9f)
             {
-                Debug.Log("stopped");
                 movementSpeed = 0;
             } 
         }
         // finalize movement
-        Debug.Log("final move speed:" + movementSpeed);
         Vector3 move = new Vector3(movementSpeed, gravitationalSpeed);
-        Debug.Log(move);
         move *= Time.deltaTime;
         RaycastHit2D hit = Physics2D.BoxCast(transform.position + (Vector3.down * 0.25f), new Vector2(0.95f,0.5f), 0f, Vector2.down, Mathf.Abs(move.y),lm);
         isGrounded = (hit.collider != null);
