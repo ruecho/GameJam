@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     public float gravityAcceleration;
     public float maxFallingSpeed;
     public float jumpAcceleration;
-    public float maxhorizontalSpeed=5.0f;
     float horizontalSpeed;
     bool isGrounded;
     public float runAcceleration;
@@ -39,22 +38,19 @@ public class PlayerController : MonoBehaviour
         }
         // walk and run
         float playerInput = Input.GetAxis("Horizontal");
-        bool isMoving = (playerInput != 0);
         int moveDir = playerInput > 0 ? 1 : (playerInput < 0 ? -1 : 0);
                 
-        if (isMoving)
+        if(moveDir != 0)
         {
             verticalSpeed += runAcceleration * moveDir * Time.deltaTime;
             verticalSpeed = Mathf.Clamp(verticalSpeed, -maxSpeed, maxSpeed);
         }
-        else if (verticalSpeed != 0)
+        else
         {
-            verticalSpeed -= runDeceleration * (verticalSpeed > 0 ? 1 : -1) * Time.deltaTime;
-            verticalSpeed = Mathf.Clamp(verticalSpeed, 0, (verticalSpeed > 0 ? 1 : verticalSpeed < 0 ? -1 : 0));
+            verticalSpeed = 0;
         }
-        //Debug.Log(playerInput);
         // finalize movement
-        Vector3 move = new Vector3(playerInput* maxhorizontalSpeed, horizontalSpeed);//TODO REMOVE TMP
+        Vector3 move = new Vector3(verticalSpeed, horizontalSpeed);//TODO REMOVE TMP
         move *= Time.deltaTime;
         RaycastHit2D hit = Physics2D.BoxCast(transform.position + (Vector3.down * 0.25f), new Vector2(1,0.5f), 0f, Vector2.down, Mathf.Abs(move.y),lm);
         isGrounded = (hit.collider != null);
