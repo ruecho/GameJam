@@ -6944,7 +6944,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -10.04
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3492587321562272809, guid: 2ce09d420d6f39c46af6eee4eadbf031, type: 3}
     m_RemovedGameObjects:
     - {fileID: 4667211568597897863, guid: 2ce09d420d6f39c46af6eee4eadbf031, type: 3}
     m_AddedGameObjects:
@@ -8827,6 +8828,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraRig
       objectReference: {fileID: 0}
+    - target: {fileID: 602900282754217926, guid: c5f552246fb3eda4ba9a667961678728, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2322426734092283120, guid: c5f552246fb3eda4ba9a667961678728, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8874,6 +8879,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4868983310276393320, guid: c5f552246fb3eda4ba9a667961678728, type: 3}
+    - {fileID: 137016344750930348, guid: c5f552246fb3eda4ba9a667961678728, type: 3}
+    - {fileID: 3739700731969909153, guid: c5f552246fb3eda4ba9a667961678728, type: 3}
+    - {fileID: 2853762706615595828, guid: c5f552246fb3eda4ba9a667961678728, type: 3}
+    - {fileID: 3149939845059628191, guid: c5f552246fb3eda4ba9a667961678728, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2322426734092283120, guid: c5f552246fb3eda4ba9a667961678728, type: 3}
       insertIndex: -1
