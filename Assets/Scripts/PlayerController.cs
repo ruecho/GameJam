@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public float runDeceleration;
     float verticalSpeed;
     bool active = true;
+    public LayerMask lm;
+    //public int layer=1;
     void Start()
     {
         
@@ -53,14 +55,14 @@ public class PlayerController : MonoBehaviour
         // finalize movement
         Vector3 move = new Vector3(playerInput, horizontalSpeed);
         move *= Time.deltaTime;
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position + (Vector3.down * 0.25f), new Vector2(1,0.5f), 0f, Vector2.down, Mathf.Abs(move.y));
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position + (Vector3.down * 0.25f), new Vector2(1,0.5f), 0f, Vector2.down, Mathf.Abs(move.y),lm);
         isGrounded = (hit.collider != null);
         if(hit.collider != null && move.y < 0)
         {
             move.y = -hit.distance;
             horizontalSpeed = 0;
         }
-        RaycastHit2D hit2 = Physics2D.BoxCast(transform.position + (Vector3.up * 0.25f), new Vector2(1,0.5f), 0f, Vector2.up, Mathf.Abs(move.y));
+        RaycastHit2D hit2 = Physics2D.BoxCast(transform.position + (Vector3.up * 0.25f), new Vector2(1,0.5f), 0f, Vector2.up, Mathf.Abs(move.y),lm);
         if(hit2.collider != null && move.y > 0)
         {
             move.y = hit.distance;

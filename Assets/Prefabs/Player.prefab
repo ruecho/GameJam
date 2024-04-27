@@ -51,6 +51,9 @@ MonoBehaviour:
   runAcceleration: 0
   maxSpeed: 0
   runDeceleration: 0
+  lm:
+    serializedVersion: 2
+    m_Bits: 1014
 --- !u!1 &8038226154760564997
 GameObject:
   m_ObjectHideFlags: 0
