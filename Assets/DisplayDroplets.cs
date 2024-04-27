@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,8 +27,10 @@ public class DisplayDroplets : MonoBehaviour
         
 
         List<Vector4> tab = new();
-        var xs = new float[4] { 4f,   4f,  4f, 4f};
-        var ys = new float[4] { 4f,   4f,  4f, 4f};
+        var xs = new float[20]; //{ 4f,   4f,  4f, 4f};
+        var ys = new float[20];// { 4f,   4f,  4f, 4f};
+        Array.Fill(xs, 4f);
+        Array.Fill(ys, 4f);
         {
             int i = 0;
             foreach (Transform c in dropletsParent.GetComponentInChildren<Transform>())
@@ -45,7 +48,7 @@ public class DisplayDroplets : MonoBehaviour
             }
         }
 
-        for (int i = 0; i<4; i++)
+        for (int i = 0; i<20; i++)
         {
             var x = xs[i];
             var y = ys[i];

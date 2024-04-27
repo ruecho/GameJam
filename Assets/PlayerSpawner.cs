@@ -8,17 +8,21 @@ public class PlayerSpawner : MonoBehaviour
     public GameObject droplets;
     public GameObject droplet;
 
-    public void spawnDroplet(Vector3 pos)
+    public void spawnDroplet(Vector3 pos,Vector3 velocity,bool check=true)
     {
         foreach (Transform t in droplets.GetComponentsInChildren<Transform>())
         {
-            if((t.position-pos).magnitude < 4f)
+            if((t.position-pos).magnitude < 0.5f)
             {
-                return;
+                if (check)
+                {
+                    return;
+                }
             }
         }
         Debug.Log("drop");
         GameObject drop=Instantiate(droplet, droplets.transform);
+        drop.GetComponent<Rigidbody2D>().velocity = velocity;
         drop.transform.position = pos;
     }
 
