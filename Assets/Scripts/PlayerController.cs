@@ -119,7 +119,13 @@ public class PlayerController : MonoBehaviour
 
     public void kill()
     {
-        this.GetComponentInParent<PlayerSpawner>().spawnDroplet(transform.position);
+        float a = 0;// Mathf.PI;
+        for(int i= 0; i < 5; i++)
+        {
+            a += Mathf.PI*2.0f / 5.0f;
+            this.GetComponentInParent<PlayerSpawner>().spawnDroplet(transform.position, new Vector2(Mathf.Sin(a), Mathf.Cos(a))*20f,false);
+        }    
+        
         Destroy(this.gameObject);
         active = false;
     }
