@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     public GameObject spriteStuff;
     bool readyToRespawn = false;
     GameObject playerSpawn;
+    public AudioSource explosion;
+    public AudioSource jump;
     
     void Start()
     {
@@ -50,6 +52,8 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             gravitationalSpeed = jumpAcceleration;
+            jump.pitch = Random.Range(0.9f, 1.1f);
+            jump.Play();
         }
         // walk and run
         float playerInput = Input.GetAxis("Horizontal");
@@ -137,6 +141,7 @@ public class PlayerController : MonoBehaviour
     }
     void Death()
     {
+        explosion.Play();
         readyToRespawn = true;
         spriteStuff.SetActive(false);
         ps.Play();
