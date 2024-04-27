@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed;
     public float runDeceleration;
     float verticalSpeed;
+    bool active = true;
     void Start()
     {
         
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
         bool isMoving = (playerInput != 0);
         int moveDir = playerInput > 0 ? 1 : (playerInput < 0 ? -1 : 0);
                 
-        if(isMoving)
+        if (isMoving)
         {
             verticalSpeed += runAcceleration * moveDir * Time.deltaTime;
             verticalSpeed = Mathf.Clamp(verticalSpeed, -maxSpeed, maxSpeed);
@@ -48,9 +49,9 @@ public class PlayerController : MonoBehaviour
             verticalSpeed -= runDeceleration * (verticalSpeed > 0 ? 1 : -1) * Time.deltaTime;
             verticalSpeed = Mathf.Clamp(verticalSpeed, 0, (verticalSpeed > 0 ? 1 : verticalSpeed < 0 ? -1 : 0));
         }
-        Debug.Log(verticalSpeed);
+        //Debug.Log(playerInput);
         // finalize movement
-        Vector3 move = new Vector3(verticalSpeed, horizontalSpeed);
+        Vector3 move = new Vector3(playerInput, horizontalSpeed);
         move *= Time.deltaTime;
         RaycastHit2D hit = Physics2D.BoxCast(transform.position + (Vector3.down * 0.25f), new Vector2(1,0.5f), 0f, Vector2.down, Mathf.Abs(move.y));
         isGrounded = (hit.collider != null);
@@ -66,5 +67,14 @@ public class PlayerController : MonoBehaviour
             if(!Input.GetButton("Jump"))horizontalSpeed /= 2;
         }
         transform.Translate(move);
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            if (active)
+            {
+                this.GetComponentInParent<PlayerSpawner>().spawnDroplet(transform.position);
+                Destroy(this.gameObject);
+                active = false;
+            }
+        }
     }
 }
