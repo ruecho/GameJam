@@ -10,6 +10,14 @@ public class PlayerSpawner : MonoBehaviour
 
     public void spawnDroplet(Vector3 pos)
     {
+        foreach (Transform t in droplets.GetComponentsInChildren<Transform>())
+        {
+            if((t.position-pos).magnitude < 4f)
+            {
+                return;
+            }
+        }
+        Debug.Log("drop");
         GameObject drop=Instantiate(droplet, droplets.transform);
         drop.transform.position = pos;
     }
