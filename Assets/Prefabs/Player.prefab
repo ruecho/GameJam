@@ -48,10 +48,10 @@ MonoBehaviour:
   gravityAcceleration: 7
   maxFallingSpeed: -4
   jumpAcceleration: 6.5
-  runAcceleration: 20
-  changeDirAcceleration: 3
-  maxSpeed: 10
-  runDeceleration: 0
+  runAcceleration: 10
+  changeDirAcceleration: 9
+  maxSpeed: 5
+  runDeceleration: 9
   lm:
     serializedVersion: 2
     m_Bits: 1014

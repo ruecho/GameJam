@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("left");
                 movementSpeed += runDeceleration * Time.deltaTime;
             }
-            if(movementSpeed < 0.01f || movementSpeed > -0.01f)
+            if(movementSpeed < 0.02f && movementSpeed > -0.02f)
             {
                 Debug.Log("stopped");
                 movementSpeed = 0;
