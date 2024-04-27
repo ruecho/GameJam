@@ -46,12 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityAcceleration: 7
-  maxFallingSpeed: -4
+  maxFallingSpeed: -6
   jumpAcceleration: 6.5
-  runAcceleration: 10
-  changeDirAcceleration: 9
+  runAcceleration: 20
+  changeDirAcceleration: 20
   maxSpeed: 5
-  runDeceleration: 9
+  runDeceleration: 20
   lm:
     serializedVersion: 2
     m_Bits: 998
