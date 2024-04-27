@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     float movementSpeed;
     bool active = true;
     public LayerMask lm;
+    public float dropletsSpeed = 0.5f;
     //public int layer=1;
     void Start()
     {
@@ -120,12 +121,11 @@ public class PlayerController : MonoBehaviour
     public void kill()
     {
         float a = 0;// Mathf.PI;
-        for(int i= 0; i < 5; i++)
-        {
-            a += Mathf.PI*2.0f / 5.0f;
-            this.GetComponentInParent<PlayerSpawner>().spawnDroplet(transform.position, new Vector2(Mathf.Sin(a), Mathf.Cos(a))*20f,false);
-        }    
-        
+        Vector3 spp = transform.position;
+        spp.y -= 1;
+
+        transform.GetComponentInParent<PlayerSpawner>().spawnDropletBoom(transform.position,1.0f,3);
+
         Destroy(this.gameObject);
         active = false;
     }
