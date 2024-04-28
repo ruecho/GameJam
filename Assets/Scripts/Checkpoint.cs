@@ -22,7 +22,7 @@ public class Checkpoint : MonoBehaviour
     {
         if(!isCheckpoint)
         {
-            if(player.transform.position.y < top.position.y && 
+            if(player.transform.position.y < top.position.y &&
             player.transform.position.y > bot.position.y)
             {
                 if(player.transform.position.x > left.position.x &&

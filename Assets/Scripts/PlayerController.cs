@@ -28,15 +28,16 @@ public class PlayerController : MonoBehaviour
     public GameObject spriteStuff2;
     public GameObject spriteStuff3;
     bool readyToRespawn = false;
-    GameObject playerSpawn;
     public AudioSource explosion;
     public AudioSource jump;
     public Animator myAnim;
-    
-    void Start()
+    CheckpointSystem chckpntsys;
+
+    private void Start()
     {
-        playerSpawn = FindFirstObjectByType<PlayerSpawn>().gameObject;
+        chckpntsys = FindFirstObjectByType<CheckpointSystem>();
     }
+
     void Update()
     {
         if(readyToRespawn)
@@ -58,6 +59,8 @@ public class PlayerController : MonoBehaviour
             jump.pitch = Random.Range(0.9f, 1.1f);
             jump.Play();
         }
+        if (gravitationalSpeed > 0 && Input.GetButtonUp("Jump"))
+            gravitationalSpeed /= 2;
         // walk and run
         float playerInput = Input.GetAxis("Horizontal");
         int moveDir = playerInput > 0 ? 1 : (playerInput < 0 ? -1 : 0);      
@@ -171,7 +174,7 @@ public class PlayerController : MonoBehaviour
     {
         gravitationalSpeed = 0;
         movementSpeed = 0;
-        transform.position = playerSpawn.transform.position;
+        transform.position = chckpntsys.currentSpawn.transform.position;
         readyToRespawn = false;
         spriteStuff.SetActive(true);
         spriteStuff2.SetActive(true);
