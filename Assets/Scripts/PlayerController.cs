@@ -32,14 +32,18 @@ public class PlayerController : MonoBehaviour
     public AudioSource jump;
     public Animator myAnim;
     CheckpointSystem chckpntsys;
+    public bool isEnabled = false;
+    GameMenu gameMenu;
 
     private void Start()
     {
         chckpntsys = FindFirstObjectByType<CheckpointSystem>();
+        gameMenu = FindFirstObjectByType<GameMenu>();
     }
 
     void Update()
     {
+        if (!isEnabled) return;
         if(readyToRespawn)
         {
             deathTimer -= Time.deltaTime;
@@ -107,6 +111,10 @@ public class PlayerController : MonoBehaviour
             {
                 Death();
             }
+            if (hit.collider.gameObject.tag == "Finish")
+            {
+                Win();
+            }
         }
         RaycastHit2D hit2 = Physics2D.BoxCast(transform.position + (Vector3.up * 0.25f), new Vector2(0.95f,0.5f), 0f, Vector2.up, Mathf.Abs(move.y),lm);
         if(hit2.collider != null && move.y > 0)
@@ -116,6 +124,10 @@ public class PlayerController : MonoBehaviour
             if(hit2.collider.gameObject.tag == "KillerObstacle")
             {
                 Death();
+            }
+            if (hit2.collider.gameObject.tag == "Finish")
+            {
+                Win();
             }
         }
         RaycastHit2D hit3 = Physics2D.BoxCast(transform.position + (Vector3.left * 0.25f), new Vector2(0.5f,0.95f), 0f, Vector2.left, Mathf.Abs(move.x),lm);
@@ -127,6 +139,10 @@ public class PlayerController : MonoBehaviour
             {
                 Death();
             }
+            if (hit3.collider.gameObject.tag == "Finish")
+            {
+                Win();
+            }
         }
         RaycastHit2D hit4 = Physics2D.BoxCast(transform.position + (Vector3.right * 0.25f), new Vector2(0.5f,0.95f), 0f, Vector2.right, Mathf.Abs(move.x),lm);
         if(hit4.collider != null && move.x > 0)
@@ -137,6 +153,10 @@ public class PlayerController : MonoBehaviour
             {
                 Death();
             }
+            if (hit4.collider.gameObject.tag == "Finish")
+            {
+                Win();
+            }
         }
         RaycastHit2D hit5 = Physics2D.BoxCast(transform.position, new Vector2(1,1), 0f, Vector2.zero, 0);
         if(hit5.collider != null)
@@ -144,6 +164,10 @@ public class PlayerController : MonoBehaviour
             if(hit5.collider.gameObject.tag == "KillerObstacle")
             {
                 Death();
+            }
+            if (hit5.collider.gameObject.tag == "Finish")
+            {
+                Win();
             }
         }                
         transform.Translate(move);
@@ -161,6 +185,7 @@ public class PlayerController : MonoBehaviour
     }
     void Death()
     {
+        gameMenu.AddDeath();
         explosion.Play();
         readyToRespawn = true;
         spriteStuff.SetActive(false);
@@ -180,6 +205,11 @@ public class PlayerController : MonoBehaviour
         spriteStuff2.SetActive(true);
         spriteStuff3.SetActive(true);
         ps.Stop();
+    }
+    void Win()
+    {
+        isEnabled = false;
+        gameMenu.StopGame();
     }
 
     public void kill()
