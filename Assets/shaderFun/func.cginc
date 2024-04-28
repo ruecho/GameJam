@@ -5,7 +5,7 @@
 
 UNITY_INSTANCING_BUFFER_START(Props)
 UNITY_DEFINE_INSTANCED_PROP(
-float4 my_tab[40], [40])// creates array of size 2
+float4 my_tab[1], [320])// creates array of size 2
 UNITY_INSTANCING_BUFFER_END(Props)
 
 float dist(float2 pos, float2 target)
@@ -27,7 +27,7 @@ void MyFunction2_float(float2 UV, out float Out)
 {
     float val = 1000.0;
     float4 array[] = UNITY_ACCESS_INSTANCED_PROP(Props, my_tab);
-        for (int i = 0; i < 40;i++)
+        for (int i = 0; i < 160;i++)
         {
             float2 p;
             p.x = array[i].x;
@@ -39,7 +39,7 @@ void MyFunction2_float(float2 UV, out float Out)
     
     
     
-    Out = val*2.0;
+    Out = val*5.0;
 }
 
 #endif //MYHLSLINCLUDE_INCLUDED

@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
         spriteStuff.SetActive(false);
         ps.Play();
         deathTimer = deathCooldown;
-        transform.GetComponent<DropMaker>().spawnDropletBoom(transform.position,1.0f,5);
+        transform.GetComponent<DropMaker>().spawnDropletBoom(transform.position,2.0f,5);
     }
     void Respawn()
     {
@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
         spp.y -= 1;
         if (transform.GetComponentInParent<PlayerSpawner>() != null)
         {
-            transform.GetComponentInParent<PlayerSpawner>().spawnDropletBoom(transform.position, 1.0f, 3);
+            transform.GetComponentInParent<PlayerSpawner>().spawnDropletBoom(transform.position, 3.0f, 20);
 
             Destroy(this.gameObject);
             active = false;
