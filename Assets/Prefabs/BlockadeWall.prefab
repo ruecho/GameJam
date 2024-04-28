@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6175799915100045114}
   - component: {fileID: 8133937519053842973}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DIFF_WALL (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2002695743519846983}
   - component: {fileID: 2017492771352797904}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BLOCKADE_WALL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
