@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2632610064413478697}
   - component: {fileID: 9065761452589568082}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PUDDLE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
