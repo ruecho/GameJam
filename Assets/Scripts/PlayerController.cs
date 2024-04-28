@@ -129,7 +129,15 @@ public class PlayerController : MonoBehaviour
             {
                 Death();
             }
-        }        
+        }
+        RaycastHit2D hit5 = Physics2D.BoxCast(transform.position, new Vector2(1,1), 0f, Vector2.zero, 0);
+        if(hit5.collider != null)
+        {            
+            if(hit5.collider.gameObject.tag == "KillerObstacle")
+            {
+                Death();
+            }
+        }                
         transform.Translate(move);
         if (Input.GetKeyDown(KeyCode.O))
         {
