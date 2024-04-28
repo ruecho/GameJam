@@ -285,7 +285,7 @@ Transform:
   m_GameObject: {fileID: 4597287900760567386}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.89, y: 23.601, z: 0}
+  m_LocalPosition: {x: 18.39, y: 20.3, z: 0}
   m_LocalScale: {x: 1, y: 66.28094, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -655,6 +655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5639485340569627434}
+  - component: {fileID: 8653837942462000325}
   m_Layer: 0
   m_Name: LevelBoundaries
   m_TagString: Untagged
@@ -682,3 +683,16 @@ Transform:
   - {fileID: 3038055694762537396}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8653837942462000325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8817266791633334298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d5418726934c84086ce77100f4e41a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fanfare: {fileID: 3166880386996984597}
