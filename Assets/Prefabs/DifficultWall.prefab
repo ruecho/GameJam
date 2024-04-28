@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8869584413959212036}
   - component: {fileID: 509865952579517945}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DIFF_WALL (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6527310719967461710}
   - component: {fileID: 5084480558845464489}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DIFF_WALL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
