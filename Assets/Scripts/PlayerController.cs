@@ -25,10 +25,13 @@ public class PlayerController : MonoBehaviour
     float deathTimer;
     public ParticleSystem ps;
     public GameObject spriteStuff;
+    public GameObject spriteStuff2;
+    public GameObject spriteStuff3;
     bool readyToRespawn = false;
     GameObject playerSpawn;
     public AudioSource explosion;
     public AudioSource jump;
+    public Animator myAnim;
     
     void Start()
     {
@@ -60,6 +63,8 @@ public class PlayerController : MonoBehaviour
         int moveDir = playerInput > 0 ? 1 : (playerInput < 0 ? -1 : 0);      
         if(moveDir != 0)
         {
+            Vector3 newScale = new Vector3 (moveDir, 1, 1);
+            transform.localScale = newScale;
             if(movementSpeed * moveDir >= 0f)
             {
                 movementSpeed += runAcceleration * moveDir * Time.deltaTime;                
@@ -80,11 +85,11 @@ public class PlayerController : MonoBehaviour
             {
                 movementSpeed += runDeceleration * Time.deltaTime;
             }
-            if(movementSpeed < 0.9f && movementSpeed > -0.9f)
+            if(movementSpeed < 0.2f && movementSpeed > -0.2f)
             {
                 movementSpeed = 0;
             } 
-        }
+        }        
         // finalize movement
         Vector3 move = new Vector3(movementSpeed, gravitationalSpeed);
         move *= Time.deltaTime;
@@ -139,11 +144,15 @@ public class PlayerController : MonoBehaviour
             }
         }                
         transform.Translate(move);
-        if (Input.GetKeyDown(KeyCode.O))
+        // animate
+        myAnim.SetFloat("Speed", isGrounded ? movementSpeed : 0);
+        myAnim.SetFloat("Horizontal", gravitationalSpeed);
+
+        if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire3"))
         {
             if (active)
             {
-                kill();
+                Death();
             }
         }
     }
@@ -152,6 +161,8 @@ public class PlayerController : MonoBehaviour
         explosion.Play();
         readyToRespawn = true;
         spriteStuff.SetActive(false);
+        spriteStuff2.SetActive(false);
+        spriteStuff3.SetActive(false);
         ps.Play();
         deathTimer = deathCooldown;
         transform.GetComponent<DropMaker>().spawnDropletBoom(transform.position,2.0f,5);
@@ -163,6 +174,8 @@ public class PlayerController : MonoBehaviour
         transform.position = playerSpawn.transform.position;
         readyToRespawn = false;
         spriteStuff.SetActive(true);
+        spriteStuff2.SetActive(true);
+        spriteStuff3.SetActive(true);
         ps.Stop();
     }
 
