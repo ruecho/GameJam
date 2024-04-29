@@ -55,6 +55,7 @@ public class GameMenu : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
         if (isLanching)
         {
             //Debug.Log("TICK ST");
