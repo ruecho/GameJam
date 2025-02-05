@@ -1,4 +1,3 @@
-# DEWBIEDEW  
 
 A **2D platformer** developed for **Komiks Game Jam Łódź**.  
 
